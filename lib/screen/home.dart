@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             //   child: Text('${index + 1}'),
             // ),
             title: Text(user.fullName),
-            subtitle: Text(user.email),
+            subtitle: Text(user.location.postcode),
           );
         }),
       ),

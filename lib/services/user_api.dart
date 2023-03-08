@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:scooter/model/user_dob.dart';
-// import 'package:scooter/model/user_location.dart';
+import 'package:scooter/model/user_location.dart';
 
 import '../model/user.dart';
 import 'package:scooter/model/user_name.dart';
@@ -27,30 +27,30 @@ class UserApi {
         date: DateTime.parse(date),
       );
 
-      // final street = LocationStreet(
-      //   name: e['location']['street']['name'],
-      //   number: e['location']['street']['number'],
-      // );
+      final street = LocationStreet(
+        name: e['location']['street']['name'],
+        number: e['location']['street']['number'],
+      );
 
-      // final coordinates = LocationCoordinates(
-      //   latitude: e['location']['coordinates']['latitude'],
-      //   longitude: e['location']['coordinates']['longitude'],
-      // );
+      final coordinates = LocationCoordinates(
+        latitude: e['location']['coordinates']['latitude'],
+        longitude: e['location']['coordinates']['longitude'],
+      );
 
-      // final timezone = LocationTimezone(
-      //   offset: e['location']['timezone']['offset'],
-      //   description: e['location']['timezone']['description'],
-      // );
+      final timezone = LocationTimezone(
+        offset: e['location']['timezone']['offset'],
+        description: e['location']['timezone']['description'],
+      );
 
-      // final location = UserLocation(
-      //   city: e['location']['city'],
-      //   state: e['location']['state'],
-      //   country: e['location']['country'],
-      //   postcode: e['location']['postcode'].toString(),
-      //   street: street,
-      //   coordinates: coordinates,
-      //   timezone: timezone,
-      // );
+      final location = UserLocation(
+        city: e['location']['city'],
+        state: e['location']['state'],
+        country: e['location']['country'],
+        postcode: e['location']['postcode'].toString(),
+        street: street,
+        coordinates: coordinates,
+        timezone: timezone,
+      );
 
       return User(
         cell: e['cell'],
@@ -60,7 +60,7 @@ class UserApi {
         phone: e['phone'],
         name: name,
         dob: dob,
-        // location: location,
+        location: location,
       );
     }).toList();
     return users;
