@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'package:scooter/model/user_dob.dart';
 import 'package:scooter/model/user_location.dart';
-
+import 'package:scooter/model/user_picture.dart';
 import '../model/user.dart';
 import 'package:scooter/model/user_name.dart';
 import 'package:http/http.dart' as http;
 
 class UserApi {
   static Future<List<User>> fetchUsers() async {
-    const url = 'http://randomuser.me/api/?results=100';
+    const url = 'http://randomuser.me/api/?results=1000';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     final body = response.body;
@@ -52,6 +52,10 @@ class UserApi {
         timezone: timezone,
       );
 
+      final picture = UserPicture(
+        large: e['picture']['large'],
+      );
+
       return User(
         cell: e['cell'],
         email: e['email'],
@@ -61,6 +65,7 @@ class UserApi {
         name: name,
         dob: dob,
         location: location,
+        picture: picture,
       );
     }).toList();
     return users;

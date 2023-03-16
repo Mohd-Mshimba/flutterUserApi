@@ -21,9 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('List Of User'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('List Of User'),
+      // ),
       body: ListView.builder(
         itemCount: users.length,
         itemBuilder: ((context, index) {
@@ -32,8 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
             // leading: CircleAvatar(
             //   child: Text('${index + 1}'),
             // ),
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(user.picture.large),
+            ),
             title: Text(user.fullName),
-            subtitle: Text(user.location.postcode),
+            subtitle: Text(user.email),
           );
         }),
       ),
